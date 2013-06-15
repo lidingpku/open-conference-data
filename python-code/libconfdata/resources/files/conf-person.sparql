@@ -1,0 +1,46 @@
+PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX swrc:   <http://swrc.ontoware.org/ontology#>
+PREFIX swc:    <http://data.semanticweb.org/ns/swc/ontology#>
+
+SELECT  ?role_type ?role_label ?role_event ?role_event_label ?role_event_type
+		?name ?person_uri
+		?homepage  ?bio  ?depiction
+		(GROUP_CONCAT(distinct ?mbox_sha1sum_x ; SEPARATOR=";") as ?mbox_sha1sum) 
+		(count(distinct ?mbox_sha1sum_x) AS ?cnt_mbox)
+		(GROUP_CONCAT(distinct ?affiliationLabel ; SEPARATOR=";") as ?organization) 
+		(count(distinct ?affiliation) AS ?cnt_org)
+WHERE {
+	?role_event rdfs:label ?role_event_label.
+	?role_event a ?role_event_type.
+	?role rdfs:label ?role_label .
+	?role a ?role_type.
+	?role swc:isRoleAt ?role_event .
+	?role swc:heldBy ?person_uri.
+	?person_uri rdfs:label ?name .
+	?person_uri a foaf:Person.
+		
+	OPTIONAL{
+		?person_uri swrc:affiliation ?affiliation .
+		?affiliation rdfs:label ?affiliationLabel .
+	}	
+	OPTIONAL{
+		?person_uri swrc:bio ?bio .
+	}
+	OPTIONAL{
+		?person_uri foaf:homepage ?homepage .
+	}
+	OPTIONAL{
+		?person_uri foaf:mbox_sha1sum ?mbox_sha1sum_x .
+	}
+	OPTIONAL{
+		?person_uri foaf:depiction ?depiction .
+	}
+}
+GROUP BY 
+		?role_type ?role_label ?role_event  ?role_event_label ?role_event_type
+		?name ?person_uri
+		?homepage ?bio ?depiction
+ORDER BY 
+		?role_event  ?role_type ?role_label 
+		?name 

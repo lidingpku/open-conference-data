@@ -1,0 +1,54 @@
+PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX swc:   <http://data.semanticweb.org/ns/swc/ontology#>
+PREFIX swrc:   <http://swrc.ontoware.org/ontology#>
+PREFIX ical:  <http://www.w3.org/2002/12/cal/ical#>
+PREFIX dc:   <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms:   <http://purl.org/dc/terms/>
+
+SELECT 	?author ?title ?pages ?year
+		?link_open_access ?link_publisher 
+		?proceedings_uri ?paper_uri  ?label_proceedings ?subtitle_proceedings
+		?abstract ?category 
+		(GROUP_CONCAT(distinct ?label_subject ; SEPARATOR=",") as ?keywords) 
+		(count(distinct ?label_subject) AS ?cnt_keyword)
+		(GROUP_CONCAT(distinct ?label_topic ; SEPARATOR=",") as ?topics) 
+		(count(distinct ?label_topic) AS ?cnt_topic)
+		(GROUP_CONCAT(distinct ?label_author ; SEPARATOR=";") as ?list_author) 
+		(count(distinct ?label_author) AS ?cnt_author)
+		(GROUP_CONCAT(distinct ?url ; SEPARATOR=",") as ?list_url) 
+		(count(distinct ?url) AS ?cnt_url)
+
+WHERE {
+	?paper_uri a swrc:InProceedings .
+	?paper_uri rdfs:label ?title .
+	OPTIONAL{?paper_uri swc:isPartOf ?proceedings_uri .}
+	OPTIONAL{?proceedings_uri rdfs:label ?label_proceedings .}
+	OPTIONAL{ ?proceedings_uri swrc:subtitle ?subtitle_proceedings .}
+	
+	OPTIONAL{ ?paper_uri dc:subject ?uri_subject .  
+			  ?uri_subject rdfs:label ?label_subject .}
+	OPTIONAL{ ?paper_uri swc:hasTopic ?label_topic .}
+
+	?paper_uri ?pauthor ?author_uri .  
+	VALUES ?pauthor {swrc:author foaf:maker dc:creator}
+	?author_uri rdfs:label ?label_author .
+	
+	OPTIONAL{ ?paper_uri swrc:listAuthor ?author . }
+	OPTIONAL{ ?paper_uri swrc:pages ?pages .}
+	OPTIONAL{ ?paper_uri swrc:abstract ?abstract .}
+	OPTIONAL{ ?paper_uri swrc:category ?category .}
+	OPTIONAL{ ?paper_uri swrc:year ?year .}
+	OPTIONAL{ ?paper_uri swrc:url ?url.}
+	OPTIONAL{ ?paper_uri swrc:link_open_access ?link_open_access.}
+	OPTIONAL{ ?paper_uri swrc:link_publisher ?link_publisher.}
+
+}
+GROUP BY
+	?proceedings_uri ?label_proceedings ?paper_uri ?subtitle_proceedings
+	?author ?title ?pages ?year
+	?link_open_access ?link_publisher 
+	?abstract ?category 	
+				
+ORDER BY
+	?proceedings_uri ?title

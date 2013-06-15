@@ -12,6 +12,7 @@ config = {
     'version': '0.1',
     'install_requires': ['nose'],
     'packages': ['libconfdata'],
+    'package_data':{'': ['*.jsont','*.sparql']},
     'scripts': [],
     'name': 'Open Conference Data'
 }
