@@ -4997,8 +4997,8 @@
             <ical:date>2008-10-27T09:00:00</ical:date>
             <ical:tzid>GMT+1</ical:tzid>
         </ical:dtstart>
-        <ical:url rdf:resource="http://events.linkeddata.org/iswc2008tutorial/"/>
-        <homepage rdf:resource="http://events.linkeddata.org/iswc2008tutorial/"/>
+        <ical:url rdf:resource="http://events.linkeddata.org/iswc2008tutorial/ "/>
+        <homepage rdf:resource="http://events.linkeddata.org/iswc2008tutorial/ "/>
     </swc:TutorialEvent>
 
     <swc:TutorialEvent rdf:about="http://data.semanticweb.org/conference/iswc/2008/tutorial/modular_owl">
