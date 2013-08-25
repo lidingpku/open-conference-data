@@ -5399,7 +5399,7 @@
 
 <http://data.semanticweb.org/conference/iswc/2002> a swc:ConferenceEvent ;
     rdfs:label "The First International Semantic Web Conference" ;
-    swc:acronym "ISWC2002" ;
+    swc:hasAcronym "ISWC2002" ;
     swc:address "Sardinia, Italy" ;
     swc:completeGraph <http://data.semanticweb.org/conference/iswc/2002/complete> ;
     swc:hasLocation "Sardinia, Italy" ;
