@@ -562,8 +562,8 @@
     rdf:_1 <http://data.semanticweb.org/person/wolfram-conen> ;
     rdf:_2 <http://data.semanticweb.org/person/reinhold-klapsing> .
 
-<http://data.semanticweb.org/organization/> a foaf:Organization ;
-    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+<http://data.semanticweb.org/organization/connotate> a foaf:Organization ;
+    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     foaf:homepage <http://www.connotate.com/> ;
     foaf:logo <https://files.ifi.uzh.ch/ddis/iswc_archive/iswc/ih/SWWS-2001/logos/connotate_web.jpg> .
 
@@ -723,14 +723,14 @@
 
 <http://data.semanticweb.org/organization/language-and-computing> a foaf:Organization ;
     rdfs:label "Language and Computing" ;
-    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     foaf:homepage <http://www.landc.be/> ;
     foaf:logo <https://files.ifi.uzh.ch/ddis/iswc_archive/iswc/ih/SWWS-2001/logos/landc.jpg> ;
     foaf:name "Language and Computing" .
 
 <http://data.semanticweb.org/organization/lastmileservices> a foaf:Organization ;
     rdfs:label "LastMileServices" ;
-    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     foaf:name "LastMileServices" .
 
 <http://data.semanticweb.org/organization/laval-university> a foaf:Organization ;
@@ -788,7 +788,7 @@
 
 <http://data.semanticweb.org/organization/network-inference> a foaf:Organization ;
     rdfs:label "Network Inference" ;
-    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     foaf:homepage <http://www.networkinference.com/> ;
     foaf:logo <https://files.ifi.uzh.ch/ddis/iswc_archive/iswc/ih/SWWS-2001/logos/netinf1a.jpg> ;
     foaf:name "Network Inference" .
@@ -822,7 +822,7 @@
 
 <http://data.semanticweb.org/organization/ontoprise-gmbh> a foaf:Organization ;
     rdfs:label "Ontoprise GmbH" ;
-    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     foaf:homepage <http://www.ontoprise.de/> ;
     foaf:logo <https://files.ifi.uzh.ch/ddis/iswc_archive/iswc/ih/SWWS-2001/logos/ontoprise1a.jpg> ;
     foaf:name "Ontoprise GmbH" .
@@ -876,7 +876,7 @@
 
 <http://data.semanticweb.org/organization/sc4> a foaf:Organization ;
     rdfs:label "SC4" ;
-    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     foaf:homepage <http://www.sc4.org/> ;
     foaf:logo <https://files.ifi.uzh.ch/ddis/iswc_archive/iswc/ih/SWWS-2001/logos/sc4_web.jpg> ;
     foaf:name "SC4" .
@@ -2310,7 +2310,7 @@
 
 <http://data.semanticweb.org/organization/empolis> a foaf:Organization ;
     rdfs:label "Empolis" ;
-    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     owl:sameAs <http://dbpedia.org/resource/Empolis> ;
     foaf:homepage <http://www.empolis.com/> ;
     foaf:logo <https://files.ifi.uzh.ch/ddis/iswc_archive/iswc/ih/SWWS-2001/logos/empolisweb.jpg> ;
@@ -2340,7 +2340,7 @@
 
 <http://data.semanticweb.org/organization/inria> a foaf:Organization ;
     rdfs:label "INRIA" ;
-    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     owl:sameAs <http://dbpedia.org/resource/National_Institute_for_Research_in_Computer_Science_and_Control> ;
     foaf:homepage <http://www.inria.fr/> ;
     foaf:logo <https://files.ifi.uzh.ch/ddis/iswc_archive/iswc/ih/SWWS-2001/logos/inria1a.gif> ;
@@ -2382,7 +2382,7 @@
 
 <http://data.semanticweb.org/organization/mondeca> a foaf:Organization ;
     rdfs:label "Mondeca" ;
-    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+    swc:holdsRole <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     owl:sameAs <http://dbpedia.org/resource/Mondeca> ;
     foaf:homepage <http://www.mondeca.com/> ;
     foaf:logo <https://files.ifi.uzh.ch/ddis/iswc_archive/iswc/ih/SWWS-2001/logos/mondeca_web.jpg> ;
@@ -6040,9 +6040,9 @@
         <http://data.semanticweb.org/person/steven-h-brown>,
         <http://data.semanticweb.org/person/stuart-j-nelson> .
 
-<http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> a swc:Sponsor ;
-    rdfs:label "Sliver Sponsor" ;
-    swc:heldBy <http://data.semanticweb.org/organization/>,
+<http://data.semanticweb.org/conference/swws/2001/silver-sponsor> a swc:Sponsor ;
+    rdfs:label "Silver Sponsor" ;
+    swc:heldBy <http://data.semanticweb.org/organization/connotate>,
         <http://data.semanticweb.org/organization/empolis>,
         <http://data.semanticweb.org/organization/inria>,
         <http://data.semanticweb.org/organization/language-and-computing>,
@@ -6334,7 +6334,7 @@
 
 <http://data.semanticweb.org/conference/swws/2001> a swc:ConferenceEvent ;
     rdfs:label "The First Semantic Web Working Symposium" ;
-    swc:acronym "SWWS2001" ;
+    swc:hasAcronym "SWWS2001" ;
     swc:address "Stanford University, California, USA" ;
     swc:completeGraph <http://data.semanticweb.org/conference/swws/2001/complete> ;
     swc:hasLocation "Stanford University, California, USA" ;
@@ -6346,7 +6346,7 @@
         <http://data.semanticweb.org/conference/swws/2001/pc-member>,
         <http://data.semanticweb.org/conference/swws/2001/platinum-sponsor>,
         <http://data.semanticweb.org/conference/swws/2001/reviewer>,
-        <http://data.semanticweb.org/conference/swws/2001/sliver-sponsor> ;
+        <http://data.semanticweb.org/conference/swws/2001/silver-sponsor> ;
     swc:isSubEventOf <http://data.semanticweb.org/conference/iswc> ;
     swc:isSuperEventOf <http://data.semanticweb.org/conference/swws/2001/event-01>,
         <http://data.semanticweb.org/conference/swws/2001/event-02>,

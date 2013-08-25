@@ -378,9 +378,8 @@
 <http://data.semanticweb.org/conference/iswc/2005/poster-demo-proceedings/paper-35/author_list> a rdf:Seq ;
     rdf:_1 <http://data.semanticweb.org/person/martin-dzbor> ;
     rdf:_2 <http://data.semanticweb.org/person/philipp-cimiano> ;
-    rdf:_3 <http://data.semanticweb.org/person/> ;
-    rdf:_4 <http://data.semanticweb.org/person/victoria-uren-and> ;
-    rdf:_5 <http://data.semanticweb.org/person/sam-chapman> .
+    rdf:_3 <http://data.semanticweb.org/person/victoria-uren> ;
+    rdf:_4 <http://data.semanticweb.org/person/sam-chapman> .
 
 <http://data.semanticweb.org/conference/iswc/2005/poster-demo-proceedings/paper-36/author_list> a rdf:Seq ;
     rdf:_1 <http://data.semanticweb.org/person/loredana-laera> ;
@@ -5043,9 +5042,6 @@
         <http://data.semanticweb.org/person/peter-vorburger> ;
     foaf:name "University of Zurich" .
 
-<http://data.semanticweb.org/person/> a foaf:Person ;
-    foaf:made <http://data.semanticweb.org/conference/iswc/2005/poster-demo-proceedings/paper-35> .
-
 <http://data.semanticweb.org/person/adrian-brooks> a foaf:Person ;
     rdfs:label "Adrian Brooks" ;
     foaf:made <http://data.semanticweb.org/conference/iswc/2005/proceedings/paper-72> ;
@@ -6544,10 +6540,10 @@
     foaf:made <http://data.semanticweb.org/conference/iswc/2005/poster-demo-proceedings/paper-36> ;
     foaf:name "Valentina Tamma" .
 
-<http://data.semanticweb.org/person/victoria-uren-and> a foaf:Person ;
-    rdfs:label "Victoria Uren and" ;
+<http://data.semanticweb.org/person/victoria-uren> a foaf:Person ;
+    rdfs:label "Victoria Uren" ;
     foaf:made <http://data.semanticweb.org/conference/iswc/2005/poster-demo-proceedings/paper-35> ;
-    foaf:name "Victoria Uren and" .
+    foaf:name "Victoria Uren" .
 
 <http://data.semanticweb.org/person/ville-komulainen> a foaf:Person ;
     rdfs:label "Ville Komulainen" ;
@@ -8677,19 +8673,19 @@
     dc:title "Integrating Semantic Applications using Magpie Framework" ;
     dcterms:title "Integrating Semantic Applications using Magpie Framework" ;
     bibo:authorList <http://data.semanticweb.org/conference/iswc/2005/poster-demo-proceedings/paper-35/author_list> ;
-    swrc:author <http://data.semanticweb.org/person/>,
+    swrc:author 
         <http://data.semanticweb.org/person/martin-dzbor>,
         <http://data.semanticweb.org/person/philipp-cimiano>,
         <http://data.semanticweb.org/person/sam-chapman>,
-        <http://data.semanticweb.org/person/victoria-uren-and> ;
+        <http://data.semanticweb.org/person/victoria-uren> ;
     swrc:category "Poster Paper" ;
-    swrc:listAuthor "Martin Dzbor,Philipp Cimiano,,Victoria Uren and,Sam Chapman" ;
+    swrc:listAuthor "Martin Dzbor,Philipp Cimiano,Victoria Uren,Sam Chapman" ;
     swrc:year "2005" ;
-    foaf:maker <http://data.semanticweb.org/person/>,
+    foaf:maker 
         <http://data.semanticweb.org/person/martin-dzbor>,
         <http://data.semanticweb.org/person/philipp-cimiano>,
         <http://data.semanticweb.org/person/sam-chapman>,
-        <http://data.semanticweb.org/person/victoria-uren-and> .
+        <http://data.semanticweb.org/person/victoria-uren> .
 
 <http://data.semanticweb.org/conference/iswc/2005/poster-demo-proceedings/paper-38> a swrc:InProceedings ;
     rdfs:label "OntoFarm: Towards an Experimental Collection of Parallel Ontologies" ;
@@ -10634,7 +10630,7 @@
 
 <http://data.semanticweb.org/conference/iswc/2005> a swc:ConferenceEvent ;
     rdfs:label "The Forth International Semantic Web Conference" ;
-    swc:acronym "ISWC2005" ;
+    swc:hasAcronym "ISWC2005" ;
     swc:address "Galway, Ireland" ;
     swc:completeGraph <http://data.semanticweb.org/conference/iswc/2005/complete> ;
     swc:hasLocation "Galway, Ireland" ;

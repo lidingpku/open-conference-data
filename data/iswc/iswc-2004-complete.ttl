@@ -8780,7 +8780,7 @@
 
 <http://data.semanticweb.org/conference/iswc/2004> a swc:ConferenceEvent ;
     rdfs:label "The Third International Semantic Web Conference" ;
-    swc:acronym "ISWC2004" ;
+    swc:hasAcronym "ISWC2004" ;
     swc:address "Hiroshima,Japan" ;
     swc:completeGraph <http://data.semanticweb.org/conference/iswc/2004/complete> ;
     swc:hasLocation "Hiroshima,Japan" ;
