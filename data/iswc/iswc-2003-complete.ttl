@@ -7280,7 +7280,7 @@
 
 <http://data.semanticweb.org/conference/iswc/2003> a swc:ConferenceEvent ;
     rdfs:label "The Second International Semantic Web Conference" ;
-    swc:acronym "ISWC2003" ;
+    swc:hasAcronym "ISWC2003" ;
     swc:address "Sanibel Island, Florida, USA" ;
     swc:completeGraph <http://data.semanticweb.org/conference/iswc/2003/complete> ;
     swc:hasLocation "Sanibel Island, Florida, USA" ;
