@@ -1,0 +1,92 @@
+PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX swc:   <http://data.semanticweb.org/ns/swc/ontology#>
+PREFIX swrc:   <http://swrc.ontoware.org/ontology#>
+PREFIX ical:  <http://www.w3.org/2002/12/cal/ical#>
+
+SELECT
+	?event_uri	
+	?super_event_uri	?order_in_super_event	?event_type	
+	?label	?start	?end  ?duration	?tzid	
+	?room	?address	
+	?chair_label	
+	(GROUP_CONCAT(distinct ?name_chair_person ; SEPARATOR=",") as ?chair_person) 
+	?presenter_label	
+	(GROUP_CONCAT(distinct ?name_presenter_person ; SEPARATOR=",") as ?presenter_person) 
+	(GROUP_CONCAT(distinct ?author_x ; SEPARATOR=",") as ?author) 
+	?acronym	?abstract	?homepage	?link_document	?logo
+	?category
+WHERE {
+?event_uri a ?event_type.
+FILTER strEnds(STR(?event_type), "Event")
+?event_uri rdfs:label ?label .
+
+OPTIONAL{ ?event_uri swc:isSubEventOf ?super_event_uri . }
+OPTIONAL{ ?event_uri swc:room ?room . }
+OPTIONAL{ ?event_uri swc:address ?address . }
+OPTIONAL{ ?event_uri swc:acronym ?acronym . }
+OPTIONAL{ ?event_uri swc:order_in_super_event ?order_in_super_event .}
+
+OPTIONAL{ ?event_uri foaf:homepage ?homepage . }
+OPTIONAL{ ?event_uri foaf:logo ?logo . }
+
+OPTIONAL{ ?event_uri swrc:abstract ?abstract . }
+OPTIONAL{ ?event_uri swrc:url ?link_document . }
+OPTIONAL{
+		  ?event_uri ?pstart ?start .
+		  VALUES ?pstart {ical:dtstart ical:dtStart }
+		  FILTER isLiteral(?start)
+}
+OPTIONAL{
+		  ?event_uri ?pend ?end .
+		  VALUES ?pend {ical:dtend ical:dtEnd }
+		  FILTER isLiteral(?end)
+}
+OPTIONAL{
+		  ?event_uri ical:duration ?duration .
+}
+OPTIONAL{
+		  ?event_uri ical:tzid ?tzid .
+}
+OPTIONAL{
+		  ?event_uri ical:dtstart ?start_uri .
+		  ?start_uri  ?pdate ?start .
+		  ?event_uri ical:dtend ?end_uri .
+		  ?end_uri  ?pdate ?end .
+		  ?end_uri  ical:tzid ?tzid .
+          VALUES ?pdate {ical:date ical:dateTime }
+}
+OPTIONAL{
+	?event_uri  swc:hasRole ?chair_uri .
+	?chair_uri a  ?pchairclass .
+	VALUES ?pchairclass {swc:Chair swc:SessionChair  swc:WorkshopChair swc:TutorialChair }.
+	?chair_uri rdfs:label  ?chair_label .
+	?chair_uri swc:heldBy  ?chair_uri_person .
+	?chair_uri_person foaf:name  ?name_chair_person .
+}
+OPTIONAL{
+	?event_uri  swc:hasRole ?presenter_uri .
+	?presenter_uri a  swc:Presenter .
+	?presenter_uri rdfs:label  ?presenter_label .
+	?presenter_uri swc:heldBy  ?presenter_uri_person .
+	?presenter_uri_person foaf:name  ?name_presenter_person .
+}
+OPTIONAL{
+		?event_uri swc:hasRelatedDocument ?paper_uri .
+		?paper_uri a swrc:InProceedings .
+		?paper_uri swrc:listAuthor ?author_x .
+		OPTIONAL {?paper_uri swrc:category ?category }
+}
+}
+GROUP BY
+	?event_uri	
+	?super_event_uri	?order_in_super_event	?event_type	
+	?label	?start	?end	?duration	?tzid	
+	?room	?address	
+	?chair_label	
+	?presenter_label	
+	?acronym	?abstract	?homepage	?link_document	?logo
+	?category
+ORDER BY 
+	?start DESC(?end)
+	?super_event_uri ?order_in_super_event ?label

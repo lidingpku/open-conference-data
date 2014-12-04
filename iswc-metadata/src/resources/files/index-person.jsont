@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML+RDFa 1.0//EN' 
+	'http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd'>
+<html 
+	about='' 
+	property='dcterms:language' 
+	content='en' 
+	xmlns='http://www.w3.org/1999/xhtml' 
+	xmlns:dcterms='http://purl.org/dc/terms/' 
+	xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#' 
+	xmlns:foaf='http://xmlns.com/foaf/0.1/' 
+	xmlns:swrc='http://swrc.ontoware.org/ontology#' 
+	xmlns:xsd='http://www.w3.org/2001/XMLSchema#' 
+	version='XHTML+RDFa 1.0' typeof='foaf:Document'>
+<head>
+    <title>Persons</title>
+<style type="text/css">
+.on { 
+  background: green;
+  cursor: pointer;
+  border: 2px solid black;
+  border-right-width: 15px;
+  padding: 0 5px;
+  border-radius: 5px; 	
+}
+
+.off {
+  background: red;
+  cursor: pointer;
+  border: 2px solid black;
+  border-right-width: 2px;
+  border-left-width: 15px;
+  padding: 0 5px;
+  border-radius: 5px; 	
+}
+</style>    
+<script type="text/javascript">
+<!--
+	function togglestyle(el){
+	    if(el.className == "on") {
+	    	el.className="off";
+	    } else {
+	    	el.className="on";
+	    }
+	}
+	function toggle_visibility(cl){
+	   var els = document.getElementsByClassName(cl);
+	   for(var i=0; i<els.length; ++i){
+	      var s = els[i].style;
+	      s.display = s.display==='none' ? 'block' : 'none';
+	   };
+	}
+//-->
+</script>  
+</head>
+<body>
+<h2>Persons</h2>
+<input type="button" class="off" onclick="togglestyle(this); toggle_visibility('confs');">show/hide conferences</input>
+
+<ol>
+{.repeated section person}
+<li>
+<div><a href="{entity_uri}">{name}</a> 
+<div class="confs">
+
+
+{.repeated section conf}
+<div style="padding-left: 50px;">
+<span><a href="{conf_uri}">{year}</a></span>
+<span style="background:#FFA;">{cnt_org} {organization}</span>
+<span style="background:#FAF;">{cnt_role} {roles}</span>
+<span style="background:#AFF;">{cnt_paper}</span>
+</div>
+{.end}
+
+</div>
+</div>
+</li>
+{.end}
+</ol>
+
+</body></html>

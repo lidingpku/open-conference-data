@@ -1,0 +1,40 @@
+PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX swc:   <http://data.semanticweb.org/ns/swc/ontology#>
+PREFIX swrc:   <http://swrc.ontoware.org/ontology#>
+PREFIX ical:  <http://www.w3.org/2002/12/cal/ical#>
+PREFIX dc:   <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms:   <http://purl.org/dc/terms/>
+
+SELECT 	?author ?title ?pages ?year
+		?link_open_access ?link_publisher 
+		?proceedings_uri ?paper_uri  ?label_proceedings ?subtitle_proceedings
+		?abstract ?category 
+		(GROUP_CONCAT(distinct ?label_affiliation ; SEPARATOR=";") as ?list_affiliation) 
+		(count(distinct ?label_author) AS ?cnt_author)
+		(count(distinct ?label_affiliation) AS ?cnt_affiliation)
+
+WHERE {
+	?paper_uri a swrc:InProceedings .
+	?paper_uri rdfs:label ?title .
+	?paper_uri swrc:year ?year .
+	?paper_uri swc:isPartOf ?proceedings_uri .
+	?proceedings_uri rdfs:label ?label_proceedings .
+
+	?paper_uri ?pauthor ?author_uri .  
+	?author_uri rdfs:label ?label_author .
+
+	OPTIONAL{ ?paper_uri swrc:listAuthor ?author . }
+	
+	OPTIONAL{ 
+		?author_uri swrc:affiliation ?affiliation .
+		?affiliation rdfs:label ?label_affiliation .
+	}
+
+}
+GROUP BY
+	?proceedings_uri ?label_proceedings ?paper_uri 
+	?author ?title ?year
+				
+ORDER BY
+	?proceedings_uri ?title

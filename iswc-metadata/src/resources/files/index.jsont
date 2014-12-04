@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML+RDFa 1.0//EN' 
+	'http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd'>
+<html 
+	about='' 
+	property='dcterms:language' 
+	content='en' 
+	xmlns='http://www.w3.org/1999/xhtml' 
+	xmlns:dcterms='http://purl.org/dc/terms/' 
+	xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#' 
+	xmlns:foaf='http://xmlns.com/foaf/0.1/' 
+	xmlns:swrc='http://swrc.ontoware.org/ontology#' 
+	xmlns:xsd='http://www.w3.org/2001/XMLSchema#' 
+	version='XHTML+RDFa 1.0' typeof='foaf:Document'>
+<head>
+    <title></title>
+</head>
+<body>
+
+
+<h2>International Semantic Web Conference (ISWC) Series</h2>
+<div>Links: <a href="http://swsa.semanticweb.org/content/international-semantic-web-conference-iswc">Official Site at SWSA</a>
+-
+<a href="http://www.informatik.uni-trier.de/~ley/db/conf/semweb/">DBLP</a>
+</div>
+<div> global index:
+[<a href="index-organization.html">organization</a>]
+[<a href="index-person.html">person</a>]
+</div>
+<p/>
+
+{.repeated section conferences}
+
+<div><span>{id}</span>:
+<span><a href="{id}-proceedings.html">proceedings</a></span>
+<span><a href="{id}-program.html">program</a></span>
+<span><a href="{id}-people.html">people</a></span>
+<span><a href="{id}-index-person.html">person index</a></span>
+<span><a href="{id}-index-organization.html">organization index</a></span>
+<span>download metadata ..</span>
+<span><a href="{id}-complete.ttl">complete(rdf)</a></span>
+<span><a href="{id}-conf.json">conf(json)</a></span>
+<span><a href="{id}-conf-paper.csv">conf-paper(csv)</a></span>
+<span><a href="{id}-conf-paper.ttl">conf-paper(rdf)</a></span>
+</div>
+{.end}
+
+</body></html>

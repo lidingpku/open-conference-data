@@ -1,0 +1,68 @@
+PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX swrc:   <http://swrc.ontoware.org/ontology#>
+PREFIX swc:    <http://data.semanticweb.org/ns/swc/ontology#>
+
+SELECT  ?role_type ?role_label ?role_event ?role_event_label ?role_event_type
+		?name ?person_uri
+		(GROUP_CONCAT(distinct ?homepage_x ; SEPARATOR=";") as ?homepage) 
+		(count(distinct ?uri_paper) AS ?cnt_paper)
+		?proceedings_label
+		?bio  ?depiction
+		(GROUP_CONCAT(distinct ?mbox_sha1sum_x ; SEPARATOR=";") as ?mbox_sha1sum) 
+		(count(distinct ?mbox_sha1sum_x) AS ?cnt_mbox)
+		(GROUP_CONCAT(distinct ?affiliationLabel ; SEPARATOR=";") as ?organization) 
+		(count(distinct ?affiliation) AS ?cnt_org)
+WHERE {
+	?person_uri foaf:name ?name .
+	?person_uri a foaf:Person.
+
+	OPTIONAL{
+		{
+		?role_event rdfs:label ?role_event_label.
+		?role_event a ?role_event_type.
+		?role rdfs:label ?role_label .
+		?role a ?role_type.
+		?role swc:isRoleAt ?role_event .
+		?role swc:heldBy ?person_uri.		
+		}
+		UNION
+		{
+			?person_uri foaf:made ?uri_paper .
+			?uri_paper a swrc:InProceedings .
+
+			OPTIONAL{
+				?uri_paper swc:isPartOf ?uri_proceedings .
+				?uri_proceedings rdfs:label ?proceedings_label .
+			}	
+
+		}
+	}
+
+
+	OPTIONAL{
+		?person_uri swrc:affiliation ?affiliation .
+		?affiliation rdfs:label ?affiliationLabel .
+	}	
+	OPTIONAL{
+		?person_uri swrc:bio ?bio .
+	}
+	OPTIONAL{
+		?person_uri foaf:homepage ?homepage_x .
+	}
+	OPTIONAL{
+		?person_uri foaf:mbox_sha1sum ?mbox_sha1sum_x .
+	}
+	OPTIONAL{
+		?person_uri foaf:depiction ?depiction .
+	}
+}
+GROUP BY 
+		?role_type ?role_label ?role_event  ?role_event_label ?role_event_type
+		?proceedings_label
+		?name ?person_uri
+		?bio ?depiction
+ORDER BY 
+		?role_event  ?role_type ?role_label 
+		?proceedings_label
+		?name 

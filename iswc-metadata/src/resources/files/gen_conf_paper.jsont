@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML+RDFa 1.0//EN' 
+	'http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd'>
+<html version='XHTML+RDFa 1.0'>
+<head>
+    <title></title>
+</head>
+<body>
+
+
+<h2>For Website</h2>
+
+<p><a href="http://iswc2013.semanticweb.org/content/accepted-papers">ISWC 2013 conference Papers</a>
+</p>
+
+<div class="content" xmlns:dcterms='http://purl.org/dc/terms/' 	xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#' 	xmlns:foaf='http://xmlns.com/foaf/0.1/' 	xmlns:swrc='http://swrc.ontoware.org/ontology#' >
+
+{.repeated section tracks}
+<h3 >{label}</h3>
+
+<div class="paper">
+<ul>
+{.repeated section papers}
+<li resource="{uri}" typeof="swrc:InProceedings">
+<strong><span class="authors" property="swrc:listAuthor">{author}</span></strong>
+<em><span class="title" property="rdfs:label">{title}</span></em>
+<span property="swrc:pages" content="{pages}" />
+
+{.repeated section authors}
+<div rel="foaf:maker">
+<span resource="{uri}" typeof="foaf:Person"><span property="foaf:name" content="{name}" /></span></div>
+{.end}
+
+</li>
+{.end}
+
+</ul>
+
+{.end}
+</div>
+
+</div>
+
+
+<h2>For Proceedings</h2>
+8218TOC.tex, 8219TOC.tex
+<pre>
+
+{.repeated section tracks}
+
+\section*\{.meta-left}{label}{.meta-right}
+
+{.repeated section papers}
+
+\tocTitle{.meta-left}{title}{.meta-right}{.meta-left}{page_start}{.meta-right}
+  \tocAuthors{.meta-left}{author_latex}{.meta-right}
+
+{.end}
+
+{.end}
+</pre>
+
+</body></html>

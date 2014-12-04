@@ -1,0 +1,32 @@
+==========================
+step 1 init
+
+#download all needed data
+python task_download.py 
+
+==========================
+step 2 analysis
+
+#analyze existing iswc_vocabulary
+python task_analyze_iswc_vocab.py
+
+#extract paper info from DBLP dump
+python task_dblp.py
+
+
+
+TIPS A. regular expression
+find parenthesis
+\([^\)]+\)
+
+==========================
+step 3 convert new dataset
+
+# create mappings for named entity (need human work to grow the dictionary)
+python task_link_dbpedia.py 
+
+# convert
+python task_csv2rdf.py 
+
+
+

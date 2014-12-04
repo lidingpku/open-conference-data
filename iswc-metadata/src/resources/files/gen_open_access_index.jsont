@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML+RDFa 1.0//EN' 
+	'http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd'>
+<html version='XHTML+RDFa 1.0'>
+<head>
+    <title>ISWC2013 Proceeding Papers</title>
+<style type="text/css">
+.on { 
+  background: green;
+  cursor: pointer;
+  border: 2px solid black;
+  border-right-width: 15px;
+  padding: 0 5px;
+  border-radius: 5px; 	
+}
+
+.off {
+  background: red;
+  cursor: pointer;
+  border: 2px solid black;
+  border-right-width: 2px;
+  border-left-width: 15px;
+  padding: 0 5px;
+  border-radius: 5px; 	
+}
+</style>    
+<script type="text/javascript">
+<!--
+	function togglestyle(el){
+	    if(el.className == "on") {
+	    	el.className="off";
+	    } else {
+	    	el.className="on";
+	    }
+	}
+	function toggle_visibility(cl){
+	   var els = document.getElementsByClassName(cl);
+	   for(var i=0; i<els.length; ++i){
+	      var s = els[i].style;
+	      s.display = s.display==='none' ? 'block' : 'none';
+	   };
+	}
+//-->
+</script>    
+</head>
+<body>
+
+
+<h2>ISWC2013 Proceeding Papers</h2>
+<input type="button" class="off" onclick="togglestyle(this); toggle_visibility('abstract');">show/hide abstracts</input>
+
+<div style="margin:10px;padding-left:10px">
+Link to official proceedings at Springer
+<div style="padding-left:5px">
+<a href="http://www.springer.com/computer/ai/book/978-3-642-41334-6">12th International Semantic Web Conference, Sydney, NSW, Australia, October 21-25, 2013, Proceedings, Part I</a></div>
+<div style="padding-left:5px">
+<a href="http://www.springer.com/computer/ai/book/978-3-642-41337-7">12th International Semantic Web Conference, Sydney, NSW, Australia, October 21-25, 2013, Proceedings, Part II</a>
+</div>
+</div>
+
+<div class="content" 
+	xmlns:dcterms='http://purl.org/dc/terms/' 
+	xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#' 
+	xmlns:foaf='http://xmlns.com/foaf/0.1/' 
+	xmlns:swrc='http://swrc.ontoware.org/ontology#' 
+>
+
+{.repeated section tracks}
+<h3 >{label}</h3>
+
+<div class="paper">
+<ul>
+{.repeated section papers}
+<li resource="{uri}" typeof="swrc:InProceedings">
+<a rel="foaf:homepage" href="{link_local}"><span class="title" property="rdfs:label">{title}</span></a>,
+<span class="authors" property="swrc:listAuthor">{author}</span>,
+<span property="swrc:pages">{pages}</span>
+<div property="swrc:abstract" class="abstract" style="display:none;font-style:italic">{abstract}</div>
+
+
+</li>
+{.end}
+
+</ul>
+
+{.end}
+</div>
+
+</div>
+
+</body></html>

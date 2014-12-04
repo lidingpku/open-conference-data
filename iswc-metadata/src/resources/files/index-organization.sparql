@@ -1,0 +1,36 @@
+PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX swrc:   <http://swrc.ontoware.org/ontology#>
+PREFIX swc:    <http://data.semanticweb.org/ns/swc/ontology#>
+
+SELECT  ?conf_uri
+		 ?uri
+		(GROUP_CONCAT(distinct ?name_x ; SEPARATOR="; ") as ?name)
+		?logo
+		(GROUP_CONCAT(distinct ?homepage_x ; SEPARATOR="; ") as ?homepage)
+		(GROUP_CONCAT(distinct ?person_name ; SEPARATOR="; ") as ?member_list)
+		(count(distinct ?person_uri) AS ?cnt_member)
+
+WHERE {
+	?uri rdfs:label ?name_x .
+	?uri a foaf:Organization.
+	?conf_uri a swc:ConferenceEvent .
+		
+	OPTIONAL{
+		?uri foaf:member ?person_uri .
+		?person_uri a foaf:Person .
+		?person_uri foaf:name ?person_name .
+	}	
+	OPTIONAL{
+		?uri foaf:homepage ?homepage_x .
+	}
+	OPTIONAL{
+		?uri foaf:logo ?logo .
+	}
+}
+GROUP BY 
+		?conf_uri
+		?uri
+		?logo
+ORDER BY 
+		?uri 

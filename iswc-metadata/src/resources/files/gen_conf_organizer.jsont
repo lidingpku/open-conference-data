@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML+RDFa 1.0//EN' 
+	'http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd'>
+<html version='XHTML+RDFa 1.0'>
+<head>
+    <title></title>
+</head>
+<body>
+
+
+<h2>For Website</h2>
+<p><a href="http://iswc2013.semanticweb.org/content/organisation">ISWC 2013 conference Organisation</a>
+</p>
+
+<div class="content">
+<table style="width: 560px;" border="2" cellspacing="3" cellpadding="2"xmlns:foaf='http://xmlns.com/foaf/0.1/' >
+<tbody>
+<tr>
+<th>Position</th>
+<th>Member</th>
+</tr>
+
+{.repeated section roles}
+<tr>
+<td>
+<span style="font-weight:bold">{label}</span>
+</td>
+
+
+<td>
+{.repeated section persons}
+<div resource="{uri}" typeof="foaf:Person">
+<a property="foaf:name" rel="foaf:homepage"
+		href="{homepage}">{name}</a>
+<span property="foaf:name" content="{name}"/>
+<span property="foaf:organization" >{organization}</span>,
+<span property="foaf:country" >{country}</span>
+</div>
+
+{.end}
+</td>
+</tr>
+
+{.end}
+</tbody>
+</table>
+</div>
+
+
+<h2>For Proceedings</h2>
+
+{.repeated section roles}
+<span style="font-weight:bold">{label}</span>
+
+<table>
+{.repeated section persons}
+<tr>
+<td>
+<span class="name">{name}</span>
+</td>
+<td>
+<span class="organization" >{organization}</span>,
+<span class="country" >{country}</span>
+</td>
+</tr>
+{.end}
+</table>
+
+{.end}
+
+
+</body></html>
